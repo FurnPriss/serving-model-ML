@@ -1,0 +1,22 @@
+{
+    "product_score": 0.7500000000000004,
+    "qty": 0.347107438016529,
+    "freight_price": 0.46147453986960874,
+    "product_weight_g": 0.6683937823834196,
+    "lag_price": 0.3781490629086155,
+    "comp_1": 0.4139737921212121,
+    "ps1": 0.625,
+    "fp1": 0.6858152529106063,
+    "comp_2": 0.39531680454545454,
+    "ps2": 0.9090909090909087,
+    "fp2": 0.4150667974686347,
+    "bed_bath_table": 0,
+    "computers_accessories": 1,
+    "consoles_games": 0,
+    "cool_stuff": 0,
+    "furniture_decor": 0,
+    "garden_tools": 0,
+    "health_beauty": 0,
+    "perfumery": 0,
+    "watches_gifts": 0
+}
