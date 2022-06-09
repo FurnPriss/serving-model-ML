@@ -51,15 +51,16 @@ def prepredict():
             params = flask.request.args
 
         if(params is not None):
+            scaler_input = [list(params.values())]
             scaler = joblib.load('ml_models/scaler.joblib')
-            scaler_result = scaler.transform(params['data'])
+            scaler_result = scaler.transform(scaler_input)
 
             utils.printScalerLogs(
-                scaler_input=params['data'], scaler_result=scaler_result
+                scaler_input=scaler_input, scaler_result=scaler_result
             )
 
             scaler_input_object = dict(
-                zip(utils.scaler_data_index, params['data'][0]))
+                zip(utils.scaler_data_index, scaler_input[0]))
             scaler_result_object = dict(
                 zip(utils.scaler_data_index, scaler_result[0]))
 
@@ -101,6 +102,26 @@ def predict_test():
     # return a response in json format
     return flask.jsonify(data)
 
+
+@app.route("/dicttoarray", methods=["POST"])
+def dicttoarray():
+    data = {"success": False}
+    
+    try:
+        params = flask.request.json
+        
+        # x = pd.DataFrame.from_dict(params, orient='index').transpose()
+        x = list(params.values())
+        
+        data['success'] = True
+        print(x)
+        data['x'] = x
+        
+    except Exception as e:
+        data['message'] = str(e)
+        data['cause'] = str(e.__class__)
+        
+    return flask.jsonify(data)
 
 # start the flask app, allow remote connections
 app.run(host='0.0.0.0', debug=True)
