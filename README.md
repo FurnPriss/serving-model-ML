@@ -1,4 +1,4 @@
-# Simple Repfit ML Deploy
+# Simple Repfit ML Deployment
 This is a simple ML Deployment using flask microframework.
 
 ## Getting Started
@@ -22,18 +22,18 @@ flask run
 ```
 
 ### 4. Test the server
-Here I have prepared a shell script file called `RUN.sh` to test if the server running properly.
+Here I have prepared a shell script file called `RUN_xxxx.sh` to test if the server running properly.
 
 You need to add execute permission to this file before you can run it.
 
 ```bash
-chmod +x RUN.sh
+chmod +x RUN_xxxx.sh
 ```
 
 Then, you can execute the file.
 
 ```bash
-./RUN.sh
+./RUN_xxxx.sh
 ```
 
 The server is working properly if showing the result like this:
