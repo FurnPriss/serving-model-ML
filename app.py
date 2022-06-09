@@ -68,8 +68,9 @@ def prepredict():
             data['scaler_result'] = scaler_result_object
         else:
             data['message'] = 'You need to send parameters to this endpoint.'
-    except BaseException:
-        data['message'] = 'You need to send a json input data. See `input_data_json` folder in this repository to see the data example.'
+    except Exception as e:
+        data['message'] = str(e)
+        data['cause'] = str(e.__class__)
 
     return flask.jsonify(data)
 
