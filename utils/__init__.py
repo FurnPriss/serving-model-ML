@@ -1,27 +1,3 @@
-# dummy value to test the scaler
-dummy_scaler_input = [[
-    3.7,
-    16.0,
-    15.628125,
-    35.0,
-    850.0,
-    35.0,
-    103.2333333,
-    4.1,
-    22.3,
-    35.0,
-    3.7,
-    15.628125,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0
-]]
 # object indexes
 scaler_data_index = [
     'product_score',
@@ -46,6 +22,19 @@ scaler_data_index = [
     'perfumery',
     'watches_gifts',
 ]
+
+
+def printScalerLogs(scaler_input, scaler_result):
+    print('')
+    print('Scaler Input')
+    print('------------------')
+    printScalerDataToConsole(
+        scaler_data_index, scaler_input)
+    print('Scaler Result')
+    print('------------------')
+    printScalerDataToConsole(
+        scaler_data_index, scaler_result)
+
 
 def printScalerDataToConsole(scaler_data_index, scaler_data):
     """inputViewer
