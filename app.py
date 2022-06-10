@@ -8,6 +8,8 @@ import tensorflow as tf
 
 # local libraries
 import utils
+from utils.modelConstants import ModelConstants
+from utils.repfitModel import RepfitModel
 
 # instantiate flask
 app = flask.Flask(__name__)
@@ -40,6 +42,30 @@ def hello():
         "message": "Hello world!"
     })
 
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = {"success": False}
+    
+    try:
+        params = flask.request.json
+        
+        scaler_input = {
+            "categories": params["categories"],
+            "qty": params["qty"],
+            "product_weight": params["product_weight"],
+            "comp_1": params["comp_1"],
+            "ps1": params["ps1"],
+        }
+        scaler_input = ModelConstants.fillWithDataConstants(**scaler_input)
+        scaler_result = RepfitModel.scaleData(**scaler_input)
+        
+        data['unit_price'] = RepfitModel.predictPrice(scaler_result['result'])
+        data["success"] = True
+    except Exception as e:
+        data["message"] = str(e)
+        data["cause"] = str(e.__class__)
+        
+    return flask.jsonify(data)
 
 @app.route("/prepredict", methods=["GET", "POST"])
 def prepredict():
