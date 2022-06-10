@@ -6,6 +6,7 @@ import keras as K
 import pandas as pd
 import tensorflow as tf
 
+
 # local libraries
 import utils
 from utils.modelConstants import ModelConstants
@@ -46,6 +47,7 @@ def hello():
 @app.route("/predict", methods=["POST"])
 def predict():
     data = {"success": False}
+    x = None
 
     try:
         params = flask.request.json
@@ -109,6 +111,7 @@ def predict_test():
     data = {"success": False}
 
     params = flask.request.json
+
     if (params is None):
         params = flask.request.args
 
