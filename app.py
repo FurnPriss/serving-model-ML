@@ -116,7 +116,7 @@ def predict_test():
     if (params is not None):
         x = pd.DataFrame.from_dict(params, orient="index").transpose()
 
-        prediction_result = str(model.predict(x)[0][0])
+        prediction_result = model.predict(x)[0][0]
 
         # this is used to get the price from prediction result (unscaled)
         # unscaled = scaled * (max - min) + min ......(1)
@@ -124,7 +124,7 @@ def predict_test():
         ## unit_price = prediction_result * (max - min) + min
         # max and min values are the constants
         # max and min values are the constants
-        data["unit_price"] = (float(prediction_result) * (364.900000 - 19.900000) + 19.900000)
+        data["unit_price"] = (prediction_result * (364.900000 - 19.900000) + 19.900000)
         data["success"] = True
 
     # return a response in json format

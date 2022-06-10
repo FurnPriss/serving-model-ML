@@ -19,14 +19,14 @@ class RepfitModel:
 
             x = pd.DataFrame.from_dict(
                 scaler_result, orient="index").transpose()
-            prediction_result = str(model.predict(x)[0][0])
+            prediction_result = model.predict(x)[0][0]
             # this is used to get the price from prediction result (unscaled)
             # unscaled = scaled * (max - min) + min ......(1)
             # which is in this case
             ## unit_price = prediction_result * (max - min) + min
             # max and min values are the constants
             # max and min values are the constants
-            return (float(prediction_result) * (364.000000 - 19.900000) + 19.900000)
+            return (prediction_result * (364.000000 - 19.900000) + 19.900000)
         except Exception as e:
             raise e
 
