@@ -1,0 +1,22 @@
+{
+    "product_score": 3.7,
+    "qty": 16,
+    "freight_price": 35,
+    "product_weight_g": 850,
+    "lag_price": 35,
+    "comp_1": 103.2333333,
+    "ps1": 4.1,
+    "fp1": 22.3,
+    "comp_2": 35,
+    "ps2": 3.7,
+    "fp2": 15.628125,
+    "bed_bath_table": 0,
+    "computers_accessories": 0,
+    "consoles_games": 0,
+    "cool_stuff": 0,
+    "furniture_decor": 1,
+    "garden_tools": 0,
+    "health_beauty": 0,
+    "perfumery": 0,
+    "watches_gifts": 0
+}
