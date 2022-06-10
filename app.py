@@ -124,4 +124,4 @@ def dicttoarray():
     return flask.jsonify(data)
 
 # start the flask app, allow remote connections
-app.run(host='0.0.0.0', debug=True)
+app.run(host='0.0.0.0')
