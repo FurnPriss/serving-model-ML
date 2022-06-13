@@ -4,7 +4,6 @@ import flask
 import joblib
 import keras as K
 import pandas as pd
-import tensorflow as tf
 
 
 # local libraries
@@ -23,15 +22,7 @@ def rmse(y_true, y_pred):
 # to use it when loading the model
 
 
-def auc(y_true, y_pred):
-    auc = tf.metrics.auc(y_true, y_pred)[1]
-    K.backend.get_session().run(tf.local_variables_initializer())
-    return auc
-
-
 # load the model, and pass in the custom metric function
-global graph
-graph = tf.compat.v1.get_default_graph()
 model = load_model("ml_models/model_repfit_v1.h5", custom_objects={"rmse": rmse})
 model.load_weights("ml_models/model_repfit_v1_weights.h5")
 
@@ -47,7 +38,6 @@ def hello():
 @app.route("/predict", methods=["POST"])
 def predict():
     data = {"success": False}
-    x = None
 
     try:
         params = flask.request.json
@@ -118,6 +108,8 @@ def predict_test():
     # if parameters are found, return a prediction
     if (params is not None):
         x = pd.DataFrame.from_dict(params, orient="index").transpose()
+        
+        print(x)
 
         prediction_result = model.predict(x)[0][0]
 
